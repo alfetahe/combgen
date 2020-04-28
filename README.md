@@ -7,10 +7,14 @@ Both functions accept 1 parameter(slice of strings)
 2. CalculatePossibleCombinations - returns a slice of string which contains all possible combinations.
 
 # Installation
+``` bash
 go get github.com/anuarsaeed/combgen
+```
 Command above will download the package to your $GOPATH/src/github.com/ directory.
 
+
 # Usage example
+``` go
 package main
 
 import(
@@ -27,4 +31,5 @@ func main() {
 	// Outputs: [ABC ABC BAC BAC CAB CAB]
 	fmt.Println(combgen.CalculatePossibleCombinations(data))
 }
+```
 
