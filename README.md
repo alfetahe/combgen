@@ -1,12 +1,30 @@
 # Combination generator
+Simple package for generating all possible combinations from slice.
 
-# usage example
+## Functions
+Both functions accept 1 parameter(slice of strings)
+1. NrOfPossibleCalculations - returns integer value of possible combinations.
+2. CalculatePossibleCombinations - returns a slice of string which contains all possible combinations.
 
-import "github.com/anuarsaeed/combination-generator/combgen"
+# Installation
+go get github.com/anuarsaeed/combgen
+Command above will download the package to your $GOPATH/src/github.com/ directory.
 
-data := []string{"1", "2", "3"}
-result = combgen.NrOfPossibleCalculations()
+# Usage example
+package main
 
-data := []string{"A", "B", "C"}
-result = combgen.CalculatePossibleCombinations(data)
+import(
+    "github.com/anuarsaeed/combgen"
+	"fmt"
+)
+
+func main() {
+	data := []string{"A", "B", "C"}
+
+	// Outputs: 6
+	fmt.Println(combgen.NrOfPossibleCalculations(data))
+
+	// Outputs: [ABC ABC BAC BAC CAB CAB]
+	fmt.Println(combgen.CalculatePossibleCombinations(data))
+}
 
