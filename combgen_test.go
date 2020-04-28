@@ -3,7 +3,6 @@ package combgen_test
 import(
 	"testing"
 	"combgen"
-	"combgen/helpers"
 )
 
 func TestNrOfPossibleCalculations(t *testing.T) {
@@ -25,7 +24,7 @@ func TestCalculatePossibleCombinations(t * testing.T) {
 		"DABC", "DABC", "DBAC", "DBAC", "DCAB", "DCAB"}
 	result := combgen.CalculatePossibleCombinations(inputData)
 
-	if !helpers.Equal(correctOutput, result) {
+	if !combgen.Equal(correctOutput, result) {
 		t.Errorf("Calculating possible combinations test failed.")
 	}
 }

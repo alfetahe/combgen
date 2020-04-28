@@ -1,9 +1,5 @@
 package combgen
 
-import (
-	"combgen/helpers"
-)
-
 // Global variable for storing the generated data.
 var generatedData []string
 
@@ -32,7 +28,7 @@ func permute(slice []string, lockedElement string) {
 		twoElSliceWorker(slice, lockedElement)
 	} else {
 		for index, lockedEl := range slice {
-			newSlice := helpers.RemoveFromSliceByIndex(slice, index)
+			newSlice := RemoveFromSliceByIndex(slice, index)
 			permute(newSlice, lockedElement+lockedEl)
 		}
 	}
