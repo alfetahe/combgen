@@ -3,8 +3,12 @@ package combgen
 // Global variable for storing the generated data.
 var generatedData []string
 
+// Global variable for storing the output string max length.
+var outputMaxLength int
+
 // NrOfPossibleCalculations return the possible nr of combinations.
 func NrOfPossibleCalculations(inputSlice[]string) int {
+	resetGlobalVariables()
 	nrOfChars := len(inputSlice)
 	result := 1
 	for i := 1; i < nrOfChars+1; i++ {
@@ -15,7 +19,9 @@ func NrOfPossibleCalculations(inputSlice[]string) int {
 }
 
 // CalculatePossibleCombinations returns all the calculated combinations.
-func CalculatePossibleCombinations(input []string) []string {
+func CalculatePossibleCombinations(input []string, allowedLength int) []string {
+	resetGlobalVariables()
+	setMaxAllowedStringLength(allowedLength, len(input))
 	var defaultElement = ""
 	permute(input, defaultElement)
 
@@ -24,7 +30,9 @@ func CalculatePossibleCombinations(input []string) []string {
 
 // Recursive function for looping thru the slice.
 func permute(slice []string, lockedElement string) {
-	if len(slice) == 2 {
+	if outputMaxLength == len(lockedElement) {
+		generatedData = append(generatedData, lockedElement)
+	} else if len(slice) == 2 && len(lockedElement) > outputMaxLength {
 		twoElSliceWorker(slice, lockedElement)
 	} else {
 		for index, lockedEl := range slice {
@@ -41,4 +49,17 @@ func twoElSliceWorker(slice []string, lockedElement string) {
 	generatedData = append(generatedData, firstPart, secondPart)
 }
 
+// Set max allowed string length.
+func setMaxAllowedStringLength(allowedLength int, inputLength int) {
+	if allowedLength == 0 || allowedLength > inputLength {
+		outputMaxLength = inputLength
+	} else {
+		outputMaxLength = allowedLength
+	}
+}
+
+func resetGlobalVariables() {
+	generatedData = []string{}
+	outputMaxLength = 0
+}
 
