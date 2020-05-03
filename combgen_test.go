@@ -16,7 +16,7 @@ func TestNrOfPossibleCalculations(t *testing.T) {
 }
 
 func TestCalculatePossibleCombinations(t * testing.T) {
-	inputData := []string{"A", "B", "C"}
+	inputData := []string{"A", "B", "C", "D"}
 	correctOutput := []string{
 		"ABCD", "ABDC", "ACBD", "ACDB", "ADBC", "ADCB",
 		"BACD", "BADC", "BCAD", "BCDA", "BDAC", "BDCA",
