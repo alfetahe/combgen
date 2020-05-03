@@ -2,7 +2,7 @@
 Simple package for generating all possible combinations from slice.
 
 ## Functions
-Both functions accept 1 parameter(slice of strings)
+Both functions accept 2 parameter(slice - string and the max length of the output strings - int)
 1. NrOfPossibleCalculations - returns integer value of possible combinations.
 2. CalculatePossibleCombinations - returns a slice of string which contains all possible combinations.
 
@@ -26,10 +26,17 @@ func main() {
 	data := []string{"A", "B", "C"}
 
 	// Outputs: 6
-	fmt.Println(combgen.NrOfPossibleCalculations(data))
+	fmt.Println(combgen.NrOfPossibleCalculations(data, 0))
 
 	// Outputs: [ABC ACB BAC BCA CAB CBA]
-	fmt.Println(combgen.CalculatePossibleCombinations(data))
+	fmt.Println(combgen.CalculatePossibleCombinations(data, 3))
 }
 ```
+
+
+## TODO
+1. Add max string length functionality to the NrOfPossibleCalculations functional aswell.
+2. Rewrite the code using structs rather global variables and functions.
+3. Edit README file.
+
 
