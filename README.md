@@ -28,7 +28,7 @@ func main() {
 	// Outputs: 6
 	fmt.Println(combgen.NrOfPossibleCalculations(data))
 
-	// Outputs: [ABC ABC BAC BAC CAB CAB]
+	// Outputs: [ABC ACB BAC BCA CAB CBA]
 	fmt.Println(combgen.CalculatePossibleCombinations(data))
 }
 ```

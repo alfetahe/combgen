@@ -37,7 +37,7 @@ func permute(slice []string, lockedElement string) {
 // Function for populating the generated data global variable.
 func twoElSliceWorker(slice []string, lockedElement string) {
 	firstPart := lockedElement + slice[0] + slice[1]
-	secondPart := lockedElement + slice[0] + slice[1]
+	secondPart := lockedElement + slice[1] + slice[0]
 	generatedData = append(generatedData, firstPart, secondPart)
 }
 

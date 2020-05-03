@@ -16,12 +16,12 @@ func TestNrOfPossibleCalculations(t *testing.T) {
 }
 
 func TestCalculatePossibleCombinations(t * testing.T) {
-	inputData := []string{"A", "B", "C", "D"}
+	inputData := []string{"A", "B", "C"}
 	correctOutput := []string{
-		"ABCD", "ABCD", "ACBD", "ACBD", "ADBC", "ADBC",
-		"BACD", "BACD", "BCAD", "BCAD", "BDAC", "BDAC",
-		"CABD", "CABD", "CBAD", "CBAD", "CDAB", "CDAB",
-		"DABC", "DABC", "DBAC", "DBAC", "DCAB", "DCAB"}
+		"ABCD", "ABDC", "ACBD", "ACDB", "ADBC", "ADCB",
+		"BACD", "BADC", "BCAD", "BCDA", "BDAC", "BDCA",
+		"CABD", "CADB", "CBAD", "CBDA", "CDAB", "CDBA",
+		"DABC", "DACB", "DBAC", "DBCA", "DCAB", "DCBA"}
 	result := combgen.CalculatePossibleCombinations(inputData)
 
 	if !combgen.Equal(correctOutput, result) {
