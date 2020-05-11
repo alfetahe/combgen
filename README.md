@@ -35,8 +35,7 @@ func main() {
 
 
 ## TODO
-1. Add max string length functionality to the NrOfPossibleCalculations functional aswell.
-2. Rewrite the code using structs rather global variables and functions.
-3. Edit README file.
+1. Rewrite the code using structs rather global variables and functions.
+2. Edit README file.
 
 
