@@ -2,7 +2,7 @@
 Simple package for generating all possible combinations from slice.
 
 ## Functions
-Both functions accept 2 parameter a slice of strings and int value of how many characters will be used.
+Both functions accept 2 parameter a slice of strings and int value of how many characters the output will be(pass 0 for default).
 1. NrOfPossibleCalculations - returns integer value of possible combinations.
 2. CalculatePossibleCombinations - returns a slice of string which contains all possible combinations.
 
