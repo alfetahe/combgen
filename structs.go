@@ -35,7 +35,7 @@ func (noRepComb nonRepeatCombinations) calculateNrOfCombinations() int {
 	return result
 }
 
-// Intrface Calculation method.
+// Intrface Calculation method. TODO
 func (noRepComb nonRepeatCombinations) calculateCombinations() []string {
 
 	asp := []string{"adff"}

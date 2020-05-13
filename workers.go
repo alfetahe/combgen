@@ -10,6 +10,7 @@ func getFactorial(nrOfChars int) int {
 	return factorial
 }
 
+// TODO remove,append and return
 func permute(combPointer nonRepeatCombinations, lockedElement string) {
 	if combPointer.maxAllowedCharacters == len(lockedElement) {
 		//append(combPointer.combinationList, lockedElement)
