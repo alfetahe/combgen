@@ -6,22 +6,17 @@ var generatedData []string
 // Global variable for storing the output string max length.
 var outputMaxLength int
 
-// NrOfPossibleCalculations return the possible nr of combinations.
-func NrOfPossibleCalculations(inputSlice[]string, allowedLength int) int {
+// CalculateNrOfCombinations return the possible nr of combinations.
+func CalculateNrOfCombinations(inputSlice[]string, allowedLength int) int {
 	resetGlobalVariables()
-	nrOfChars := len(inputSlice)	
-	validCheck := checkIfAllowedStringLengthIsValid(allowedLength, nrOfChars)
+	nrOfChars := len(inputSlice)
+	setMaxAllowedStringLength(allowedLength, len(inputSlice))	
 
-	if validCheck == true {
-		return getFactorial(nrOfChars) / getFactorial(nrOfChars - allowedLength)
-	} else {
-		return getFactorial(nrOfChars)	
-	}
-
+	return getFactorial(nrOfChars) / getFactorial(nrOfChars - outputMaxLength)
 }
 
-// CalculatePossibleCombinations returns all the calculated combinations.
-func CalculatePossibleCombinations(inputSlice []string, allowedLength int) []string {
+// CalculateCombinations returns all the calculated combinations.
+func CalculateCombinations(inputSlice []string, allowedLength int) []string {
 	resetGlobalVariables()
 	setMaxAllowedStringLength(allowedLength, len(inputSlice))
 	var defaultElement = ""

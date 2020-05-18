@@ -10,26 +10,16 @@ func getFactorial(nrOfChars int) int {
 }
 
 // Recursive function for looping thru the slice.
-func permute(slice []string, lockedElement string) {
-	if outputMaxLength == len(lockedElement) {
-		generatedData = append(generatedData, lockedElement)
-	} else if len(slice) == 2 && len(lockedElement) > outputMaxLength {
-		twoElSliceWorker(slice, lockedElement)
+func permute(slice []string, prevLockedEl string) {
+	if outputMaxLength == len(prevLockedEl) {
+		generatedData = append(generatedData, prevLockedEl)
 	} else {
 		for index, lockedEl := range slice {
 			newSlice := RemoveFromSliceByIndex(slice, index)
-			permute(newSlice, lockedElement+lockedEl)
+			permute(newSlice, prevLockedEl+lockedEl)
 		}
 	}
 }
-
-// Function for populating the generated data global variable.
-func twoElSliceWorker(slice []string, lockedElement string) {
-	firstPart := lockedElement + slice[0] + slice[1]
-	secondPart := lockedElement + slice[1] + slice[0]
-	generatedData = append(generatedData, firstPart, secondPart)
-}
-
 
 // Set max allowed string length.
 func setMaxAllowedStringLength(allowedLength int, inputLength int) {
