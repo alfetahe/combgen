@@ -27,10 +27,20 @@ func getCombinations(combInterf combgenInterface) []string {
 	return combInterf.calculateCombinations() 
 }
 
+// Set max allowed character size.
+func setMaxAllowedCharSize(maxAllowedChars int, inputLength int) int {
+	if maxAllowedChars == 0 {
+		return inputLength
+	}
+	return maxAllowedChars
+}
+
 
 // Interface Calculation method.
 func (noRepComb nonRepeatCombinations) calculateNrOfCombinations() int {
 	nrOfChars := len(noRepComb.clientInput)	
+	maxAllowedCharSize := noRepComb.combinations.maxAllowedCharacters
+	noRepComb.combinations.maxAllowedCharacters = setMaxAllowedCharSize(maxAllowedCharSize, nrOfChars)
 	result := getFactorial(nrOfChars) / getFactorial(nrOfChars - noRepComb.maxAllowedCharacters)
 	return result
 }
