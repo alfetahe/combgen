@@ -6,8 +6,8 @@ var generatedData []string
 // Global variable for storing the output string max length.
 var outputMaxLength int
 
-// CalculateNrOfCombinations return the possible nr of combinations.
-func CalculateNrOfCombinations(inputSlice[]string, allowedLength int) int {
+// CalculateCombinationsCount return the possible nr of combinations.
+func CalculateCombinationsCount(inputSlice[]string, allowedLength int) int {
 	resetGlobalVariables()
 	nrOfChars := len(inputSlice)
 	setMaxAllowedStringLength(allowedLength, len(inputSlice))	
