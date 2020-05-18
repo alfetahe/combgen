@@ -11,18 +11,18 @@ func getFactorial(nrOfChars int) int {
 }
 
 // TODO remove,append and return
-func permute(combPointer nonRepeatCombinations, lockedElement string) {
-	if combPointer.maxAllowedCharacters == len(lockedElement) {
-		//append(combPointer.combinationList, lockedElement)
+func permute(combPointer nonRepeatCombinations, prevLockedEl string) nonRepeatCombinations {
+	if combPointer.maxAllowedCharacters == len(prevLockedEl) {
+		combPointer.combinationList = append(combPointer.combinationList, prevLockedEl)
 	} else {
 		for index, lockedEl := range combPointer.activeSlice {
-			RemoveFromSliceByIndex(combPointer.activeSlice, index)
+			combPointer.activeSlice = RemoveFromSliceByIndex(combPointer.activeSlice, index)
 
-			permute(combPointer, lockedElement+lockedEl)
+			permute(combPointer, prevLockedEl+lockedEl)
 		}
 	}
 
-	//return combPointer.combinationList
+	return combPointer
 }
 
 

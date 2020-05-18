@@ -5,8 +5,9 @@ package combgen
 // RemoveFromSliceByIndex Removes item from slice by index.
 func RemoveFromSliceByIndex(slice []string, index int) []string {
 	ret := make([]string, 0)
-	ret = append(ret, slice[:index]...)
-	return append(ret, slice[index+1:]...)
+    ret = append(ret, slice[:index]...)
+    ret = append(ret, slice[index+1:]...)
+	return ret
 }
 
 // Equal tells whether a and b contain the same elements.
