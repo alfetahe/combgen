@@ -5,7 +5,6 @@ type combinations struct {
 	maxAllowedCharacters int
 	nrOfCombinations int
 	combinationList []string
-	activeSlice []string
 }
 
 type nonRepeatCombinations struct {
@@ -16,52 +15,38 @@ type charRepeatCombinations struct {
 	combinations
 }
 
-
-// Get Method for calculated struct data. Return int value of nrOfPossibleCombinations.
-func getNrOfCombinations(combInterf combgenInterface) int {
-	return combInterf.calculateNrOfCombinations() 
-}
-
-// Get Method for calculated struct data. Return int value of nrOfPossibleCombinations.
-func getCombinations(combInterf combgenInterface) []string {
-	return combInterf.calculateCombinations() 
-}
-
 // Set max allowed character size.
-func setMaxAllowedCharSize(maxAllowedChars int, inputLength int) int {
-	if maxAllowedChars == 0 {
-		return inputLength
+func (comb *combinations) setMaxAllowedCharSize(charRepeat bool) {
+	maxAllowedCharSize := comb.maxAllowedCharacters
+	if maxAllowedCharSize == 0 || maxAllowedCharSize > len(comb.clientInput){
+		comb.maxAllowedCharacters = len(comb.clientInput)
+	}else {
+		comb.maxAllowedCharacters = maxAllowedCharSize
 	}
-	return maxAllowedChars
 }
-
 
 // Interface Calculation method.
 func (noRepComb nonRepeatCombinations) calculateNrOfCombinations() int {
 	nrOfChars := len(noRepComb.clientInput)	
-	maxAllowedCharSize := noRepComb.combinations.maxAllowedCharacters
-	noRepComb.combinations.maxAllowedCharacters = setMaxAllowedCharSize(maxAllowedCharSize, nrOfChars)
 	result := getFactorial(nrOfChars) / getFactorial(nrOfChars - noRepComb.maxAllowedCharacters)
 	return result
 }
 
-// Intrface Calculation method. TODO
-func (noRepComb nonRepeatCombinations) calculateCombinations() []string {
-
-	asp := []string{"adff"}
-
+// Intrface Calculation method.
+func (noRepComb nonRepeatCombinations) calculateCombinations() [] string {
 	var defaultElement = ""
-	permute(noRepComb, defaultElement)
-
-	return asp
+	permute(&noRepComb, defaultElement, noRepComb.clientInput)
+	return noRepComb.combinationList
 }
 
 
 
 // TODO functionality
-func (charRepComb charRepeatCombinations) calculateNrOfCombinations() {
+func (charRepComb charRepeatCombinations) calculateNrOfCombinations() int {
+	return 0
 }
-func (charRepComb charRepeatCombinations) calculateCombinations() {
+func (charRepComb charRepeatCombinations) calculateCombinations() [] string {
+	return [] string {}
 }
 
 

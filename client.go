@@ -1,21 +1,31 @@
 package combgen
 
-func GetNrOfCombinationsNonRepeat(input []string, maxAllowedChars int) int {
-	combs := nonRepeatCombinations{combinations{clientInput: input, maxAllowedCharacters: maxAllowedChars}}
-	return getNrOfCombinations(combs)
+func CalculateCombinationsCount(input []string, maxAllowedChars int, charRepeat bool) int {
+	combinationStruct := buildCombinationStruct(input, maxAllowedChars, charRepeat)
+	var result int
+	if !charRepeat {
+		combInterface :=  nonRepeatCombinations{combinationStruct}
+		result =  combInterface.calculateNrOfCombinations() 
+	} else {
+		combInterface :=  charRepeatCombinations{combinationStruct}
+		result =  combInterface.calculateNrOfCombinations()
+	}	
+	
+	return result
 }
 
-func GetCombinationsNonRepeat(input []string, maxAllowedChars int) []string {
-	combs := nonRepeatCombinations{
-		combinations{
-			clientInput: input,
-			maxAllowedCharacters: maxAllowedChars,
-			combinationList: input,
-			activeSlice: input,
-		},
-	}
-	
-	return getCombinations(combs)
+func CalculateCombinations(input []string, maxAllowedChars int, charRepeat bool) []string {
+	combinationStruct := buildCombinationStruct(input, maxAllowedChars, charRepeat)
+	var result []string
+	if !charRepeat {
+		combInterface :=  nonRepeatCombinations{combinationStruct}
+		result = combInterface.calculateCombinations()
+	} else {
+		combInterface :=  charRepeatCombinations{combinationStruct}
+		result =  combInterface.calculateCombinations()
+	}	
+
+	return result
 }
 
 
