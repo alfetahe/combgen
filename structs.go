@@ -37,17 +37,40 @@ func (charRepComb charRepeatCombinations) calculateNrOfCombinations() int {
 }
 
 func (noRepComb nonRepeatCombinations) calculateCombinations() []string {
-	var defaultElement = ""
-	permute(&noRepComb, defaultElement, noRepComb.clientInput)
+	noRepComb.permute(&noRepComb, "", noRepComb.clientInput)
 	return noRepComb.combinationList
 }
 
-// TODO functionality
 func (charRepComb charRepeatCombinations) calculateCombinations() []string {
-
 	createDuplicatesForRepeat(&charRepComb)
-
-	var defaultElement string
-	permuteWithRepeat(&charRepComb, defaultElement, charRepComb.clientInput)
+	charRepComb.permute(&charRepComb, "", charRepComb.clientInput)
 	return charRepComb.combinationList
+}
+
+func (charRepComb *charRepeatCombinations) permute(combPointer *charRepeatCombinations, prevLockedEl string, activeSlice []string) {
+	if combPointer.maxAllowedCharacters == len(prevLockedEl) {
+		if !SliceContains(combPointer.combinationList, prevLockedEl) {
+			combPointer.combinationList = append(combPointer.combinationList, prevLockedEl)
+		}
+
+		return
+	}
+
+	for index, lockedEl := range activeSlice {
+		newActiveSlice := RemoveFromSliceByIndex(activeSlice, index)
+		newLockedEl := prevLockedEl + lockedEl
+		combPointer.permute(combPointer, newLockedEl, newActiveSlice)
+	}
+}
+
+func (noRepComb *nonRepeatCombinations) permute(combPointer *nonRepeatCombinations, prevLockedEl string, activeSlice []string) {
+	if combPointer.maxAllowedCharacters == len(prevLockedEl) {
+		combPointer.combinationList = append(combPointer.combinationList, prevLockedEl)
+	} else {
+		for index, lockedEl := range activeSlice {
+			newActiveSlice := RemoveFromSliceByIndex(activeSlice, index)
+			newLockedEl := prevLockedEl + lockedEl
+			combPointer.permute(combPointer, newLockedEl, newActiveSlice)
+		}
+	}
 }
