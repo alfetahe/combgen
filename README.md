@@ -12,7 +12,7 @@ Both functions accept 3 parameter:
 
 # Installation
 ``` bash
-go get github.com/anuarsaeed/combgen
+go get github.com/alfetahe/combgen
 ```
 Command above will download the package to your $GOPATH/src/github.com/ directory.
 
