@@ -73,3 +73,27 @@ func TestCombCalcSymbols(t *testing.T) {
 		t.Errorf("TestCombinationGeneratorSymbols failed.")
 	}
 }
+
+func TestCombCalcRepeat(t *testing.T) {
+	inputData := []string{"A", "B", "C"}
+	correctOutput := []string{"ABC", "ABA", "ABB", "ACB", "ACA", "ACC", "AAB", "AAC", "AAA",
+		"BAC", "BAA", "BAB", "BCA", "BCB", "BCC", "BBA", "BBC", "BBB",
+		"CAB", "CAA", "CAC", "CBA", "CBB", "CBC", "CCA", "CCB", "CCC"}
+	result := combgen.CalculateCombinations(inputData, 3, true)
+
+	if !combgen.Equal(correctOutput, result) {
+		t.Errorf("TestCombCalcRepeat failed.")
+	}
+}
+
+func TestCombCalcRepeatDuplicateChar(t *testing.T) {
+	inputData := []string{"A", "B", "C", "A"}
+	correctOutput := []string{"ABC", "ABA", "ABB", "ACB", "ACA", "ACC", "AAB", "AAC", "AAA",
+		"BAC", "BAA", "BAB", "BCA", "BCB", "BCC", "BBA", "BBC", "BBB",
+		"CAB", "CAA", "CAC", "CBA", "CBB", "CBC", "CCA", "CCB", "CCC"}
+	result := combgen.CalculateCombinations(inputData, 3, true)
+
+	if !combgen.Equal(correctOutput, result) {
+		t.Errorf("TestCombCalcRepeatDuplicateChar failed.")
+	}
+}
