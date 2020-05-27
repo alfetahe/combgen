@@ -2,13 +2,13 @@
 Simple package for generating all possible combinations from slice.
 
 ## Functions
+1. CalculateCombinationsCount([]string{}, int, bool) int - returns integer value of possible combinations count.
+2. CalculateCombinations([]string{}, int, bool) []string - returns a slice of string which contains all possible combinations.
+
 Both functions accept 3 parameter: 
 1. []string{} - data for the calculation
 2. int - calculated combinations character length(pass 0 for default, will be the length of input slice)
 3. bool - if character can repeat
-
-1. CalculateCombinationsCount() int - returns integer value of possible combinations count.
-2. CalculateCombinations() []string - returns a slice of string which contains all possible combinations.
 
 # Installation
 ``` bash
