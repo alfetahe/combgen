@@ -15,7 +15,6 @@ type charRepeatCombinations struct {
 	combinations
 }
 
-// Set max allowed character size.
 func (comb *combinations) setMaxAllowedCharSize(charRepeat bool) {
 	maxAllowedCharSize := comb.maxAllowedCharacters
 	if maxAllowedCharSize == 0 || maxAllowedCharSize > len(comb.clientInput) && !charRepeat {
@@ -25,18 +24,10 @@ func (comb *combinations) setMaxAllowedCharSize(charRepeat bool) {
 	}
 }
 
-// Interface Calculation method.
 func (noRepComb nonRepeatCombinations) calculateNrOfCombinations() int {
 	nrOfChars := len(noRepComb.clientInput)
 	result := getFactorial(nrOfChars) / getFactorial(nrOfChars-noRepComb.maxAllowedCharacters)
 	return result
-}
-
-// Intrface Calculation method.
-func (noRepComb nonRepeatCombinations) calculateCombinations() []string {
-	var defaultElement = ""
-	permute(&noRepComb, defaultElement, noRepComb.clientInput)
-	return noRepComb.combinationList
 }
 
 func (charRepComb charRepeatCombinations) calculateNrOfCombinations() int {
@@ -45,7 +36,18 @@ func (charRepComb charRepeatCombinations) calculateNrOfCombinations() int {
 	return result
 }
 
+func (noRepComb nonRepeatCombinations) calculateCombinations() []string {
+	var defaultElement = ""
+	permute(&noRepComb, defaultElement, noRepComb.clientInput)
+	return noRepComb.combinationList
+}
+
 // TODO functionality
 func (charRepComb charRepeatCombinations) calculateCombinations() []string {
-	return []string{}
+
+	createDuplicatesForRepeat(&charRepComb)
+
+	var defaultElement string
+	permuteWithRepeat(&charRepComb, defaultElement, charRepComb.clientInput)
+	return charRepComb.combinationList
 }
