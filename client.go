@@ -16,8 +16,8 @@ func getCombInterface(input []string, maxAllowedChars int, charRepeat bool) comb
 	combinationStruct := buildCombinationStruct(input, maxAllowedChars, charRepeat)
 
 	if charRepeat {
-		return charRepeatCombinations{combinationStruct}
+		return &charRepeatCombinations{combinationStruct}
 	}
 
-	return nonRepeatCombinations{combinationStruct}
+	return &nonRepeatCombinations{combinationStruct}
 }

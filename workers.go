@@ -20,14 +20,11 @@ func calculateExponent(nrOfChars int, maxAllowedCharacters int) int {
 	return result
 }
 
-func createDuplicatesForRepeat(combPointer *charRepeatCombinations) {
-	for _, element := range combPointer.clientInput {
-		for i := 1; i < combPointer.maxAllowedCharacters; i++ {
-			combPointer.clientInput = append(combPointer.clientInput, element)
-		}
+// Function for reducing the slice length and keep the recursion going.
+func reduceCharacaters(combPointer combgenInterface, activeSlice []string, prevLockedEl string) {
+	for index, lockedEl := range activeSlice {
+		newActiveSlice := RemoveFromSliceByIndex(activeSlice, index)
+		newLockedEl := prevLockedEl + lockedEl
+		combPointer.permute(newLockedEl, newActiveSlice)
 	}
-}
-
-func reduceCharacaters(combPointer combgenInterface) {
-
 }
