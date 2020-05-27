@@ -3,12 +3,12 @@ Simple package for generating all possible combinations from slice.
 
 ## Functions
 Both functions accept 3 parameter: 
-[]string{} - data for the calculation
-int - calculated combinations character length(pass 0 for default, will be the length of input slice)
-bool - if character can repeat
+1. []string{} - data for the calculation
+2. int - calculated combinations character length(pass 0 for default, will be the length of input slice)
+3. bool - if character can repeat
 
-1. CalculateCombinationsCount() - returns integer value of possible combinations count.
-2. CalculateCombinations() - returns a slice of string which contains all possible combinations.
+1. CalculateCombinationsCount() int - returns integer value of possible combinations count.
+2. CalculateCombinations() []string - returns a slice of string which contains all possible combinations.
 
 # Installation
 ``` bash
