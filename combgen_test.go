@@ -5,6 +5,19 @@ import (
 	"testing"
 )
 
+// equal tells whether a and b contain the same elements.
+func equal(a []string, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
 func TestCombCount(t *testing.T) {
 	inputData := []string{"A", "B", "C", "D"}
 	correctOutput := 24
@@ -54,7 +67,7 @@ func TestCombCalc(t *testing.T) {
 		"DABC", "DACB", "DBAC", "DBCA", "DCAB", "DCBA"}
 	result := combgen.CalculateCombinations(inputData, 0, false)
 
-	if !combgen.Equal(correctOutput, result) {
+	if !equal(correctOutput, result) {
 		t.Errorf("TestCombCalc failed.")
 	}
 }
@@ -69,7 +82,7 @@ func TestCombCalcSymbols(t *testing.T) {
 		"/!", "/%", "/&", "/*"}
 	result := combgen.CalculateCombinations(inputData, 2, false)
 
-	if !combgen.Equal(correctOutput, result) {
+	if !equal(correctOutput, result) {
 		t.Errorf("TestCombinationGeneratorSymbols failed.")
 	}
 }
@@ -81,7 +94,7 @@ func TestCombCalcRepeat(t *testing.T) {
 		"CAB", "CAA", "CAC", "CBA", "CBB", "CBC", "CCA", "CCB", "CCC"}
 	result := combgen.CalculateCombinations(inputData, 3, true)
 
-	if !combgen.Equal(correctOutput, result) {
+	if !equal(correctOutput, result) {
 		t.Errorf("TestCombCalcRepeat failed.")
 	}
 }
@@ -93,7 +106,7 @@ func TestCombCalcRepeatDuplicateChar(t *testing.T) {
 		"CAB", "CAA", "CAC", "CBA", "CBB", "CBC", "CCA", "CCB", "CCC"}
 	result := combgen.CalculateCombinations(inputData, 3, true)
 
-	if !combgen.Equal(correctOutput, result) {
+	if !equal(correctOutput, result) {
 		t.Errorf("TestCombCalcRepeatDuplicateChar failed.")
 	}
 }

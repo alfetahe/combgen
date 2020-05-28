@@ -23,7 +23,7 @@ func calculateExponent(nrOfChars int, maxAllowedCharacters int) int {
 // Function for reducing the slice length and keep the recursion going.
 func reduceCharacaters(combPointer combgenInterface, activeSlice []string, prevLockedEl string) {
 	for index, lockedEl := range activeSlice {
-		newActiveSlice := RemoveFromSliceByIndex(activeSlice, index)
+		newActiveSlice := removeFromSliceByIndex(activeSlice, index)
 		newLockedEl := prevLockedEl + lockedEl
 		combPointer.permute(newLockedEl, newActiveSlice)
 	}

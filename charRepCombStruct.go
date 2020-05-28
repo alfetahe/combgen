@@ -18,7 +18,7 @@ func (charRepComb charRepeatCombinations) calculateCombinations() []string {
 
 func (combPointer *charRepeatCombinations) permute(prevLockedEl string, activeSlice []string) {
 	if combPointer.maxAllowedCharacters == len(prevLockedEl) {
-		if !SliceContains(combPointer.combinationList, prevLockedEl) {
+		if !sliceContains(combPointer.combinationList, prevLockedEl) {
 			combPointer.combinationList = append(combPointer.combinationList, prevLockedEl)
 		}
 
